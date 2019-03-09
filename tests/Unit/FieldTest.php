@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Orchid\Tests\Unit;
 
-use Orchid\Tests\TestUnitCase;
 use Illuminate\Contracts\View\View;
+use Orchid\Tests\TestUnitCase;
 
 /**
  * Class FieldTest.
@@ -95,6 +95,7 @@ class FieldTest extends TestUnitCase
      * @param mixed  $options
      *
      * @dataProvider exampleFields
+     *
      * @throws \Throwable
      */
     public function testFields(string $field, $options)

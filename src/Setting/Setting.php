@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Orchid\Setting;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Setting.
@@ -51,7 +51,7 @@ class Setting extends Model
     ];
 
     /**
-     * @param string $key
+     * @param string       $key
      * @param string|array $value
      *
      * Fast record
@@ -85,14 +85,14 @@ class Setting extends Model
 
     /**
      * @param string|array $key
-     * @param string|null $default
+     * @param string|null  $default
      *                              Get values
      *
      * @return mixed
      */
     public function get($key, $default = null)
     {
-        if (! $this->cache) {
+        if (!$this->cache) {
             return $this->getNoCache($key, $default);
         }
 
@@ -102,7 +102,7 @@ class Setting extends Model
     }
 
     /**
-     * @param string|array $key
+     * @param string|array      $key
      * @param string|array|null $default
      *
      * @return string|array|null

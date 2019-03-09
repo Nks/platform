@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Orchid\Platform\Http\Layouts;
 
-use Orchid\Screen\Layouts\Rows;
 use Orchid\Screen\Fields\SimpleMDE;
+use Orchid\Screen\Layouts\Rows;
 
 class AnnouncementLayout extends Rows
 {
     /**
-     * @return array
      * @throws \Throwable
+     *
+     * @return array
      */
     public function fields(): array
     {

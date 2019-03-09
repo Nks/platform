@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\Category;
 
+use App\Orchid\Layouts\Category\CategoryEditLayout;
+use Illuminate\Http\Request;
+use Orchid\Press\Models\Category;
+use Orchid\Press\Models\Term;
 use Orchid\Screen\Link;
 use Orchid\Screen\Screen;
-use Illuminate\Http\Request;
-use Orchid\Press\Models\Term;
-use Orchid\Press\Models\Category;
 use Orchid\Support\Facades\Alert;
-use App\Orchid\Layouts\Category\CategoryEditLayout;
 
 class CategoryEditScreen extends Screen
 {
@@ -36,7 +36,7 @@ class CategoryEditScreen extends Screen
      */
     public function query(Category $category = null): array
     {
-        if (! $category->exists) {
+        if (!$category->exists) {
             $category->setRelation('term', [new Term()]);
         }
 
@@ -79,13 +79,14 @@ class CategoryEditScreen extends Screen
     /**
      * @param Category $category
      * @param Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function save(Category $category, Request $request)
     {
         $attributes = $request->get('category');
 
-        if (! $category->exists) {
+        if (!$category->exists) {
             $category->newWithCreateTerm($attributes['term']);
         }
 
@@ -101,8 +102,10 @@ class CategoryEditScreen extends Screen
 
     /**
      * @param Category $category
-     * @return \Illuminate\Http\RedirectResponse
+     *
      * @throws \Exception
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function remove(Category $category)
     {

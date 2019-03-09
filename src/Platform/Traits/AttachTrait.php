@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Orchid\Platform\Traits;
 
-use Orchid\Attachment\Models\Attachment;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Orchid\Attachment\Models\Attachment;
 
 /**
  * Trait Attachment.
@@ -27,7 +27,7 @@ trait AttachTrait
             'attachment_id'
         );
 
-        if (! is_null($group)) {
+        if (!is_null($group)) {
             $query->where('attachmentable_group', $group);
         }
 

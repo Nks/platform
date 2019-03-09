@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace App\Orchid\Entities;
 
+use Orchid\Press\Entities\Single;
 use Orchid\Screen\Field;
-use Orchid\Screen\Fields\Map;
-use Orchid\Screen\Fields\UTM;
+use Orchid\Screen\Fields\CheckBox;
 use Orchid\Screen\Fields\Code;
-use Orchid\Screen\Fields\Tags;
+use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Map;
+use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Select;
-use Orchid\Press\Entities\Single;
-use Orchid\Screen\Fields\Picture;
-use Orchid\Screen\Fields\TinyMCE;
-use Orchid\Screen\Fields\CheckBox;
-use Orchid\Screen\Fields\TextArea;
-use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\SimpleMDE;
+use Orchid\Screen\Fields\Tags;
+use Orchid\Screen\Fields\TextArea;
+use Orchid\Screen\Fields\TinyMCE;
+use Orchid\Screen\Fields\UTM;
 
 class Page extends Single
 {
@@ -66,8 +66,9 @@ class Page extends Single
     }
 
     /**
-     * @return array
      * @throws \Throwable|\Orchid\Screen\Exceptions\TypeException
+     *
+     * @return array
      */
     public function fields(): array
     {
@@ -137,7 +138,7 @@ class Page extends Single
 
             Select::make('robot.')
                 ->options([
-                    'index' => 'Index',
+                    'index'   => 'Index',
                     'noindex' => 'No index',
                 ])
                 ->multiple()
@@ -163,8 +164,9 @@ class Page extends Single
     }
 
     /**
-     * @return array
      * @throws \Throwable
+     *
+     * @return array
      */
     public function options(): array
     {

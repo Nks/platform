@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Orchid\Tests\Unit\Press;
 
-use Orchid\Press\Models\Tag;
-use Orchid\Press\Models\Post;
-use Orchid\Tests\TestUnitCase;
-use Orchid\Press\Models\Tagged;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Orchid\Press\Models\Post;
+use Orchid\Press\Models\Tag;
+use Orchid\Press\Models\Tagged;
+use Orchid\Tests\TestUnitCase;
 
 class TagTest extends TestUnitCase
 {
@@ -34,7 +34,7 @@ class TagTest extends TestUnitCase
     /** @test */
     public function it_has_a_taggable_relationship()
     {
-        $tag = new Tag;
+        $tag = new Tag();
 
         $this->assertInstanceOf(MorphTo::class, $tag->taggable());
     }
@@ -42,7 +42,7 @@ class TagTest extends TestUnitCase
     /** @test */
     public function it_has_a_tag_relationship()
     {
-        $tag = new Tag;
+        $tag = new Tag();
 
         $this->assertInstanceOf(HasMany::class, $tag->tagged());
     }
@@ -66,7 +66,7 @@ class TagTest extends TestUnitCase
     /** @test */
     public function it_can_get_and_set_the_tagged_model()
     {
-        $tag = new Tag;
+        $tag = new Tag();
 
         $tag->setTaggedModel(Tagged::class);
 

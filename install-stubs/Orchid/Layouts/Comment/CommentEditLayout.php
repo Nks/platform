@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace App\Orchid\Layouts\Comment;
 
-use Orchid\Screen\Layouts\Rows;
 use Orchid\Screen\Fields\CheckBox;
 use Orchid\Screen\Fields\TextArea;
+use Orchid\Screen\Layouts\Rows;
 
 class CommentEditLayout extends Rows
 {
     /**
      * Views.
      *
-     * @return array
      * @throws \Throwable
+     *
+     * @return array
      */
     public function fields(): array
     {

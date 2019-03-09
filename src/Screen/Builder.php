@@ -47,7 +47,7 @@ class Builder
      * Builder constructor.
      *
      * @param FieldContract[] $fields
-     * @param Repository $data
+     * @param Repository      $data
      */
     public function __construct(array $fields, $data)
     {
@@ -123,8 +123,9 @@ class Builder
      *
      * @param Field $field
      *
-     * @return mixed
      * @throws \Throwable
+     *
+     * @return mixed
      */
     private function render(Field $field)
     {
@@ -147,7 +148,7 @@ class Builder
     {
         $prefix = $field->get('prefix');
 
-        if (! is_null($prefix)) {
+        if (!is_null($prefix)) {
             foreach (array_filter(explode(' ', $prefix)) as $name) {
                 $prefix .= '['.$name.']';
             }
@@ -179,7 +180,7 @@ class Builder
 
         $attributes['name'] = '';
         foreach ($binding as $key => $bind) {
-            if (! is_null($attributes['prefix'])) {
+            if (!is_null($attributes['prefix'])) {
                 $attributes['name'] .= '['.$bind.']';
                 continue;
             }
@@ -198,18 +199,18 @@ class Builder
     /**
      * Gets value of Repository.
      *
-     * @param string $key
+     * @param string     $key
      * @param mixed|null $value
      *
      * @return mixed
      */
     private function getValue(string $key, $value = null)
     {
-        if (! is_null($this->language)) {
+        if (!is_null($this->language)) {
             $key = $this->language.'.'.$key;
         }
 
-        if (! is_null($this->prefix)) {
+        if (!is_null($this->prefix)) {
             $key = $this->prefix.'.'.$key;
         }
 

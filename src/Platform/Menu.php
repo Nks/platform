@@ -80,7 +80,7 @@ class Menu
     {
         $arg = get_object_vars($itemMenu);
 
-        if (array_key_exists('show', $arg) && ! $arg['show']) {
+        if (array_key_exists('show', $arg) && !$arg['show']) {
             return $this;
         }
 
@@ -102,7 +102,7 @@ class Menu
     /**
      * Generate on the menu display.
      *
-     * @param string $location
+     * @param string      $location
      * @param string|null $template
      *
      * @return string
@@ -140,7 +140,7 @@ class Menu
 
         $this->container = $this->container
             ->filter(function ($item) use ($user) {
-                if (! isset($item['arg']['permission'])) {
+                if (!isset($item['arg']['permission'])) {
                     return true;
                 }
 

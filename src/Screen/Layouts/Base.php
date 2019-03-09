@@ -100,7 +100,7 @@ abstract class Base
     {
         $build = [];
 
-        if (! $this->checkPermission($this, $repository)) {
+        if (!$this->checkPermission($this, $repository)) {
             return;
         }
 
@@ -130,7 +130,7 @@ abstract class Base
     }
 
     /**
-     * @param array $layouts
+     * @param array      $layouts
      * @param int|string $key
      * @param Repository $repository
      *
@@ -141,9 +141,9 @@ abstract class Base
         $build = [];
 
         foreach ($layouts as $layout) {
-            $layout = ! is_object($layout) ? new $layout : $layout;
+            $layout = !is_object($layout) ? new $layout() : $layout;
 
-            if (! $this->checkPermission($layout, $repository)) {
+            if (!$this->checkPermission($layout, $repository)) {
                 continue;
             }
 

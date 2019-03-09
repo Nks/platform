@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Orchid\Press\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Orchid\Platform\Traits\AttachTrait;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
@@ -51,7 +51,7 @@ class Comment extends Model
      */
     public static function findByPostId(int $postId)
     {
-        $instance = new static;
+        $instance = new static();
 
         return $instance->where('post_id', $postId)->get();
     }
@@ -130,6 +130,7 @@ class Comment extends Model
      * Where clause for only approved comments.
      *
      * @param Builder $query
+     *
      * @return Builder
      */
     public function scopeApproved(Builder $query): Builder

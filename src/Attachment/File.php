@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Orchid\Attachment;
 
-use Mimey\MimeTypes;
-use Orchid\Platform\Dashboard;
+use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Mimey\MimeTypes;
 use Orchid\Attachment\Models\Attachment;
+use Orchid\Platform\Dashboard;
 use Orchid\Platform\Events\UploadFileEvent;
-use Illuminate\Contracts\Filesystem\Filesystem;
 
 /**
  * Class File.
@@ -68,8 +68,8 @@ class File
      * File constructor.
      *
      * @param UploadedFile $file
-     * @param string $disk
-     * @param string $group
+     * @param string       $disk
+     * @param string       $group
      */
     public function __construct(UploadedFile $file, string $disk, string $group = null)
     {
@@ -109,7 +109,7 @@ class File
     {
         $file = $this->getMatchesHash();
 
-        if (! $this->storage->has($this->date)) {
+        if (!$this->storage->has($this->date)) {
             $this->storage->makeDirectory($this->date);
         }
 

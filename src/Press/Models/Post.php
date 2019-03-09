@@ -5,24 +5,24 @@ declare(strict_types=1);
 namespace Orchid\Press\Models;
 
 use Carbon\Carbon;
-use Illuminate\Support\Arr;
-use Laravel\Scout\Searchable;
-use Orchid\Platform\Models\User;
-use Illuminate\Support\Collection;
-use Orchid\Support\Facades\Dashboard;
-use Orchid\Press\Traits\TaggableTrait;
-use Illuminate\Database\Eloquent\Model;
-use Orchid\Platform\Traits\AttachTrait;
-use Orchid\Platform\Traits\FilterTrait;
-use Illuminate\Database\Eloquent\Builder;
-use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Orchid\Platform\Traits\MultiLanguageTrait;
-use Orchid\Press\Exceptions\EntityTypeException;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+use Laravel\Scout\Searchable;
+use Orchid\Platform\Models\User;
+use Orchid\Platform\Traits\AttachTrait;
+use Orchid\Platform\Traits\FilterTrait;
+use Orchid\Platform\Traits\MultiLanguageTrait;
+use Orchid\Press\Exceptions\EntityTypeException;
+use Orchid\Press\Traits\TaggableTrait;
+use Orchid\Support\Facades\Dashboard;
 
 /**
  * Class Post.
@@ -151,9 +151,9 @@ class Post extends Model
     /**
      * Get the indexable data array for the model.
      *
-     * @return array
-     *
      * @throws \Throwable| EntityTypeException
+     *
+     * @return array
      */
     public function toSearchableArray(): array
     {
@@ -171,13 +171,13 @@ class Post extends Model
      *
      * @param string|null $slug
      *
-     * @return \Orchid\Press\Entities\Many|\Orchid\Press\Entities\Single|null
-     *
      * @throws \Throwable|EntityTypeException
+     *
+     * @return \Orchid\Press\Entities\Many|\Orchid\Press\Entities\Single|null
      */
     public function getEntityObject($slug = null)
     {
-        if (! is_null($this->entity)) {
+        if (!is_null($this->entity)) {
             return $this->entity;
         }
 
@@ -187,9 +187,9 @@ class Post extends Model
     /**
      * @param string $slug
      *
-     * @return $this
-     *
      * @throws \Throwable|EntityTypeException
+     *
+     * @return $this
      */
     public function getEntity(string $slug): self
     {
@@ -209,7 +209,7 @@ class Post extends Model
     }
 
     /**
-     * @param string $key
+     * @param string     $key
      * @param mixed|null $default
      *
      * @return null
@@ -218,7 +218,7 @@ class Post extends Model
     {
         $option = $this->getAttribute('options');
 
-        if (! is_array($option)) {
+        if (!is_array($option)) {
             $option = [];
         }
 
@@ -317,8 +317,8 @@ class Post extends Model
 
     /**
      * @param Builder $query
-     * @param string $taxonomy
-     * @param mixed $term
+     * @param string  $taxonomy
+     * @param mixed   $term
      *
      * @return Builder
      */
@@ -347,7 +347,7 @@ class Post extends Model
      * Get only posts with a custom status.
      *
      * @param Builder $query
-     * @param string $postStatus
+     * @param string  $postStatus
      *
      * @return Builder
      */
@@ -360,7 +360,7 @@ class Post extends Model
      * Get only posts from a custom post type.
      *
      * @param Builder $query
-     * @param string $type
+     * @param string  $type
      *
      * @return Builder
      */
@@ -373,7 +373,7 @@ class Post extends Model
      * Get only posts from an array of custom post types.
      *
      * @param Builder $query
-     * @param array $type
+     * @param array   $type
      *
      * @return Builder
      */
@@ -384,14 +384,15 @@ class Post extends Model
 
     /**
      * @param Builder $query
-     * @param null $entity
+     * @param null    $entity
+     *
+     * @throws \Throwable
      *
      * @return Builder
-     * @throws \Throwable
      */
     public function scopeFiltersApply(Builder $query, $entity = null): Builder
     {
-        if (! is_null($entity)) {
+        if (!is_null($entity)) {
             try {
                 $this->getEntity($entity);
             } catch (EntityTypeException $e) {
@@ -419,14 +420,15 @@ class Post extends Model
 
     /**
      * @param Builder $query
-     * @param null $entity
+     * @param null    $entity
+     *
+     * @throws \Throwable | EntityTypeException
      *
      * @return Builder
-     * @throws \Throwable | EntityTypeException
      */
     public function scopeFiltersApplyDashboard(Builder $query, $entity = null): Builder
     {
-        if (! is_null($entity)) {
+        if (!is_null($entity)) {
             $this->getEntity($entity);
         }
 
@@ -441,7 +443,7 @@ class Post extends Model
      */
     public function createSlug($slug = null)
     {
-        if (! is_null($slug) && $this->getOriginal('slug') === $slug) {
+        if (!is_null($slug) && $this->getOriginal('slug') === $slug) {
             $this->setAttribute('slug', $slug);
 
             return;

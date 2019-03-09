@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Orchid\Platform\Commands;
 
-use Orchid\Platform\Updates;
 use Illuminate\Console\Command;
 use Orchid\Platform\Events\InstallEvent;
+use Orchid\Platform\Providers\FoundationServiceProvider;
+use Orchid\Platform\Updates;
 use Orchid\Press\Providers\PressServiceProvider;
 use Symfony\Component\Console\Helper\ProgressBar;
-use Orchid\Platform\Providers\FoundationServiceProvider;
 
 class InstallCommand extends Command
 {
@@ -107,7 +107,7 @@ class InstallCommand extends Command
      */
     private function executeCommand(string $command, array $parameters = []): self
     {
-        if (! $this->progressBar->getProgress()) {
+        if (!$this->progressBar->getProgress()) {
             $this->progressBar->start();
         }
 
@@ -132,7 +132,7 @@ class InstallCommand extends Command
 
         $this->info(' Attempting to set ORCHID User model as parent to App\User');
 
-        if (! file_exists(app_path('User.php'))) {
+        if (!file_exists(app_path('User.php'))) {
             $this->warn('Unable to locate "app/User.php".  Did you move this file?');
             $this->warn('You will need to update this manually.  Change "extends Authenticatable" to "extends \Orchid\Platform\Models\User" in your User model');
 
@@ -144,8 +144,8 @@ class InstallCommand extends Command
     }
 
     /**
-     * @param      string $constant
-     * @param null $value
+     * @param string $constant
+     * @param null   $value
      *
      * @return \Orchid\Platform\Commands\InstallCommand
      */
@@ -165,13 +165,13 @@ class InstallCommand extends Command
      */
     private function checkInstall(): self
     {
-        if (! file_exists(app_path('Orchid'))) {
+        if (!file_exists(app_path('Orchid'))) {
             return $this;
         }
 
         $confim = $this->confirm('The platform has already been installed, do you really want to repeat?');
 
-        if (! $confim) {
+        if (!$confim) {
             die();
         }
 
@@ -185,7 +185,7 @@ class InstallCommand extends Command
      */
     private function fileGetContent(string $file)
     {
-        if (! is_file($file)) {
+        if (!is_file($file)) {
             return '';
         }
 

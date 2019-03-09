@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Orchid\Tests\Feature\Platform;
 
-use Orchid\Press\Models\Tag;
 use Orchid\Platform\Models\User;
+use Orchid\Press\Models\Tag;
 use Orchid\Tests\TestFeatureCase;
 
 class TagsTest extends TestFeatureCase
@@ -22,8 +22,8 @@ class TagsTest extends TestFeatureCase
     public function test_route_SystemsTagSearch()
     {
         Tag::create([
-            'name' => 'Super Tag',
-            'slug' => 'super-tag',
+            'name'      => 'Super Tag',
+            'slug'      => 'super-tag',
             'namespace' => 'super-tag',
         ]);
 

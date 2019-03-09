@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Orchid\Platform\Models;
 
-use Parsedown;
-use Orchid\Platform\Dashboard;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use Orchid\Platform\Dashboard;
+use Parsedown;
 
 class Announcement extends Model
 {
@@ -59,13 +59,14 @@ class Announcement extends Model
      */
     public function getParsedContentAttribute()
     {
-        return (new Parsedown)->text(htmlspecialchars($this->attributes['content']));
+        return (new Parsedown())->text(htmlspecialchars($this->attributes['content']));
     }
 
     /**
      * Scope a query to only include active announcements.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeActive($query)

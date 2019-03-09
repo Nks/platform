@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\User;
 
-use Orchid\Screen\Screen;
-use Orchid\Screen\Layouts;
-use Illuminate\Http\Request;
-use Orchid\Platform\Models\User;
-use Orchid\Support\Facades\Alert;
 use App\Orchid\Filters\RoleFilter;
 use App\Orchid\Layouts\User\UserEditLayout;
 use App\Orchid\Layouts\User\UserListLayout;
+use Illuminate\Http\Request;
+use Orchid\Platform\Models\User;
+use Orchid\Screen\Layouts;
+use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Alert;
 
 class UserListScreen extends Screen
 {
@@ -85,8 +85,7 @@ class UserListScreen extends Screen
     }
 
     /**
-     * @param User $user
-     *
+     * @param User    $user
      * @param Request $request
      *
      * @return \Illuminate\Http\RedirectResponse

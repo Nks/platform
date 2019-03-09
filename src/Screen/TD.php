@@ -134,11 +134,11 @@ class TD
      */
     public function column(string $column = null): self
     {
-        if (! is_null($column)) {
+        if (!is_null($column)) {
             $this->column = $column;
         }
 
-        if ($this->locale && ! is_null($column)) {
+        if ($this->locale && !is_null($column)) {
             $locale = '.'.app()->getLocale().'.';
             $this->column = preg_replace('/'.preg_quote('.', '/').'/', $locale, $column);
         }
@@ -192,7 +192,7 @@ class TD
 
     /**
      * @param string $route
-     * @param mixed $options
+     * @param mixed  $options
      * @param string $text
      *
      * @return TD
@@ -212,7 +212,7 @@ class TD
                 $attributes[] = $datum->getAttribute($option);
             }
 
-            if (! is_null($text)) {
+            if (!is_null($text)) {
                 $text = $datum->getContent($text);
                 $text = $text ?? '—';
             }
@@ -240,9 +240,9 @@ class TD
     }
 
     /**
-     * @param string $modal
-     * @param             string $method
-     * @param             string $options
+     * @param string      $modal
+     * @param string      $method
+     * @param string      $options
      * @param string|null $text
      *
      * @return \Orchid\Screen\TD

@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace Orchid\Platform\Models;
 
 use Exception;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Orchid\Access\UserAccess;
 use Orchid\Access\UserInterface;
-use Illuminate\Support\Facades\Hash;
-use Orchid\Support\Facades\Dashboard;
-use Orchid\Platform\Traits\FilterTrait;
-use Illuminate\Notifications\Notifiable;
-use Orchid\Platform\Traits\MultiLanguageTrait;
-use Orchid\Platform\Notifications\ResetPassword;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Orchid\Platform\Notifications\DashboardNotification;
+use Orchid\Platform\Notifications\ResetPassword;
+use Orchid\Platform\Traits\FilterTrait;
+use Orchid\Platform\Traits\MultiLanguageTrait;
+use Orchid\Support\Facades\Dashboard;
 
 class User extends Authenticatable implements UserInterface
 {
@@ -52,7 +52,7 @@ class User extends Authenticatable implements UserInterface
      * @var array
      */
     protected $casts = [
-        'permissions' => 'array',
+        'permissions'       => 'array',
         'email_verified_at' => 'datetime',
     ];
 
@@ -144,8 +144,9 @@ class User extends Authenticatable implements UserInterface
     }
 
     /**
-     * @return string
      * @throws \Exception
+     *
+     * @return string
      */
     public function getAvatar()
     {

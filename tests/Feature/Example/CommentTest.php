@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Orchid\Tests\Feature\Example;
 
-use Orchid\Press\Models\Post;
 use Orchid\Platform\Models\User;
 use Orchid\Press\Models\Comment;
+use Orchid\Press\Models\Post;
 use Orchid\Tests\TestFeatureCase;
 
 class CommentTest extends TestFeatureCase
 {
     /**
      * debug: php vendor/bin/phpunit  --filter= CommentTest tests\\Feature\\Example\\CommentTest --debug.
+     *
      * @var
      */
     private $user;

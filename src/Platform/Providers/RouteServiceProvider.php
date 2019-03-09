@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Orchid\Platform\Providers;
 
 use Base64Url\Base64Url;
-use Orchid\Platform\Dashboard;
-use Orchid\Platform\Models\Role;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
-use Orchid\Widget\WidgetContractInterface;
+use Orchid\Platform\Dashboard;
 use Orchid\Platform\Http\Middleware\AccessMiddleware;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Orchid\Platform\Models\Role;
+use Orchid\Widget\WidgetContractInterface;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -50,7 +50,7 @@ class RouteServiceProvider extends ServiceProvider
             try {
                 $widget = app()->make(Base64Url::decode($value));
 
-                abort_if(! is_a($widget, WidgetContractInterface::class), 403);
+                abort_if(!is_a($widget, WidgetContractInterface::class), 403);
 
                 return $widget;
             } catch (\Exception $exception) {

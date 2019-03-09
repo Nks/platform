@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Orchid\Screen;
 
-use Iterator;
 use Countable;
 use Illuminate\Support\Arr;
+use Iterator;
 
 /**
  * Class Repository.
@@ -19,7 +19,7 @@ class Repository extends \Illuminate\Config\Repository implements Iterator, Coun
     protected $position = 0;
 
     /**
-     * @param string $key
+     * @param string     $key
      * @param mixed|null $default
      *
      * @return mixed

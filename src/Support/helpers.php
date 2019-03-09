@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-if (! function_exists('alert')) {
+if (!function_exists('alert')) {
     /**
      * Helper function to send an alert.
      *
      * @param string|null $message
-     * @param string $level
+     * @param string      $level
      *
      * @return \Orchid\Alert\Alert
      */
@@ -15,7 +15,7 @@ if (! function_exists('alert')) {
     {
         $notifier = app('alert');
 
-        if (! is_null($message)) {
+        if (!is_null($message)) {
             return $notifier->message($message, $level);
         }
 
@@ -23,10 +23,10 @@ if (! function_exists('alert')) {
     }
 }
 
-if (! function_exists('setting')) {
+if (!function_exists('setting')) {
     /**
      * @param string|array $key
-     * @param null $default
+     * @param null         $default
      *
      * @return \Orchid\Support\Facades\Setting
      */
@@ -36,14 +36,14 @@ if (! function_exists('setting')) {
     }
 }
 
-if (! function_exists('generate_form')) {
+if (!function_exists('generate_form')) {
     /**
      * Generate a ready-made html form for display to the user.
      *
-     * @param array $fields
+     * @param array                                $fields
      * @param array|\Orchid\Screen\Repository|null $data
-     * @param string|null $language
-     * @param string|null $prefix
+     * @param string|null                          $language
+     * @param string|null                          $prefix
      *
      * @throws \Throwable
      *
@@ -62,7 +62,7 @@ if (! function_exists('generate_form')) {
     }
 }
 
-if (! function_exists('is_sort')) {
+if (!function_exists('is_sort')) {
 
     /**
      * @param null $property
@@ -71,13 +71,13 @@ if (! function_exists('is_sort')) {
      */
     function is_sort($property = null)
     {
-        $filter = new \Orchid\Platform\Filters\HttpFilter;
+        $filter = new \Orchid\Platform\Filters\HttpFilter();
 
         return $filter->isSort($property);
     }
 }
 
-if (! function_exists('get_sort')) {
+if (!function_exists('get_sort')) {
 
     /**
      * @param null $property
@@ -86,13 +86,13 @@ if (! function_exists('get_sort')) {
      */
     function get_sort($property)
     {
-        $filter = new \Orchid\Platform\Filters\HttpFilter;
+        $filter = new \Orchid\Platform\Filters\HttpFilter();
 
         return $filter->getSort($property);
     }
 }
 
-if (! function_exists('get_filter')) {
+if (!function_exists('get_filter')) {
 
     /**
      * @param null $property
@@ -101,13 +101,13 @@ if (! function_exists('get_filter')) {
      */
     function get_filter($property)
     {
-        $filter = new \Orchid\Platform\Filters\HttpFilter;
+        $filter = new \Orchid\Platform\Filters\HttpFilter();
 
         return $filter->getFilter($property);
     }
 }
 
-if (! function_exists('get_filter_string')) {
+if (!function_exists('get_filter_string')) {
 
     /**
      * @param null $property
@@ -126,7 +126,7 @@ if (! function_exists('get_filter_string')) {
     }
 }
 
-if (! function_exists('revert_sort')) {
+if (!function_exists('revert_sort')) {
 
     /**
      * @param null $property
@@ -135,20 +135,21 @@ if (! function_exists('revert_sort')) {
      */
     function revert_sort($property)
     {
-        $filter = new \Orchid\Platform\Filters\HttpFilter;
+        $filter = new \Orchid\Platform\Filters\HttpFilter();
 
         return $filter->revertSort($property);
     }
 }
 
-if (! function_exists('orchid_mix')) {
+if (!function_exists('orchid_mix')) {
     /**
      * @param string $file
      * @param string $package
      * @param string $dir
      *
-     * @return string
      * @throws Exception
+     *
+     * @return string
      */
     function orchid_mix(string $file, string $package, string $dir = '') : string
     {

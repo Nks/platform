@@ -4,20 +4,21 @@ declare(strict_types=1);
 
 namespace App\Orchid\Layouts\User;
 
-use Orchid\Screen\Field;
-use Orchid\Screen\Fields\Label;
-use Orchid\Screen\Layouts\Rows;
-use Orchid\Screen\Fields\Select;
 use Illuminate\Support\Collection;
+use Orchid\Screen\Field;
 use Orchid\Screen\Fields\CheckBox;
+use Orchid\Screen\Fields\Label;
+use Orchid\Screen\Fields\Select;
+use Orchid\Screen\Layouts\Rows;
 
 class UserRoleLayout extends Rows
 {
     /**
      * Views.
      *
-     * @return array
      * @throws \Throwable|\Orchid\Screen\Exceptions\TypeException
+     *
+     * @return array
      */
     public function fields(): array
     {
@@ -45,8 +46,9 @@ class UserRoleLayout extends Rows
     /**
      * @param Collection $permissionsRaw
      *
-     * @return array
      * @throws \Throwable|\Orchid\Screen\Exceptions\TypeException
+     *
+     * @return array
      */
     public function generatedPermissionFields(Collection $permissionsRaw) : array
     {

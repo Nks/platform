@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace Orchid\Platform\Traits;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Orchid\Platform\Filters\HttpFilter;
-use Illuminate\Database\Eloquent\Builder;
 
 trait FilterTrait
 {
     /**
      * @param Builder $query
-     * @param array $filters
+     * @param array   $filters
      *
      * @return Builder
      */
     public function scopeFiltersApply(Builder $query, array $filters = []): Builder
     {
         foreach ($filters as $filter) {
-            if (! is_object($filter)) {
+            if (!is_object($filter)) {
                 $filter = app()->make($filter);
             }
 
@@ -36,7 +36,7 @@ trait FilterTrait
      */
     public function scopeFilters(Builder $builder)
     {
-        $filter = new HttpFilter;
+        $filter = new HttpFilter();
         $filter->build($builder);
 
         return $builder;
@@ -44,8 +44,8 @@ trait FilterTrait
 
     /**
      * @param Builder $builder
-     * @param string $column
-     * @param string $direction
+     * @param string  $column
+     * @param string  $direction
      *
      * @return Builder
      */

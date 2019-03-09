@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Orchid\Press\Http\Screens;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Orchid\Press\Entities\EntityContract;
+use Orchid\Press\Entities\Many;
+use Orchid\Press\Models\Post;
+use Orchid\Screen\Layouts;
 use Orchid\Screen\Link;
 use Orchid\Screen\Screen;
-use Orchid\Screen\Layouts;
-use Illuminate\Http\Request;
-use Orchid\Press\Models\Post;
-use Orchid\Press\Entities\Many;
 use Orchid\Support\Facades\Alert;
-use Illuminate\Http\RedirectResponse;
-use Orchid\Press\Entities\EntityContract;
 
 class EntityEditScreen extends Screen
 {
@@ -49,8 +49,7 @@ class EntityEditScreen extends Screen
      * Query data.
      *
      * @param EntityContract $type
-     *
-     * @param Post $post
+     * @param Post           $post
      *
      * @return array
      */
@@ -79,7 +78,7 @@ class EntityEditScreen extends Screen
             Link::name(__('Create'))
                 ->icon('icon-check')
                 ->method('save')
-                ->canSee(! $this->exist),
+                ->canSee(!$this->exist),
 
             Link::name(__('Remove'))
                 ->icon('icon-trash')
@@ -108,12 +107,13 @@ class EntityEditScreen extends Screen
     }
 
     /**
-     * @param Request $request
+     * @param Request        $request
      * @param EntityContract $type
-     * @param Post $post
+     * @param Post           $post
+     *
+     * @throws \Illuminate\Validation\ValidationException
      *
      * @return RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function save(Request $request, EntityContract $type, Post $post): RedirectResponse
     {
@@ -142,7 +142,7 @@ class EntityEditScreen extends Screen
 
     /**
      * @param EntityContract $type
-     * @param Post $post
+     * @param Post           $post
      *
      * @throws \Exception
      *

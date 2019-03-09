@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\Comment;
 
-use Orchid\Screen\Link;
-use Orchid\Screen\Screen;
-use Orchid\Screen\Layouts;
+use App\Orchid\Layouts\Comment\CommentEditLayout;
 use Illuminate\Http\Request;
 use Orchid\Press\Models\Comment;
+use Orchid\Screen\Layouts;
+use Orchid\Screen\Link;
+use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
-use App\Orchid\Layouts\Comment\CommentEditLayout;
 
 class CommentEditScreen extends Screen
 {
@@ -95,8 +95,9 @@ class CommentEditScreen extends Screen
     /**
      * @param Comment $comment
      *
-     * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function remove(Comment $comment)
     {

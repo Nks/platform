@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace Orchid\Platform\Providers;
 
-use Orchid\Platform\Dashboard;
 use Illuminate\Support\Facades\Route;
-use Orchid\Alert\AlertServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Scout\ScoutServiceProvider;
-use Watson\Active\ActiveServiceProvider;
-use Orchid\Platform\Commands\LinkCommand;
-use Orchid\Platform\Commands\RowsCommand;
+use Orchid\Alert\AlertServiceProvider;
+use Orchid\Attachment\Providers\AttachmentServiceProvider;
 use Orchid\Platform\Commands\AdminCommand;
 use Orchid\Platform\Commands\ChartCommand;
-use Orchid\Platform\Commands\TableCommand;
 use Orchid\Platform\Commands\FilterCommand;
-use Orchid\Platform\Commands\ScreenCommand;
 use Orchid\Platform\Commands\InstallCommand;
+use Orchid\Platform\Commands\LinkCommand;
 use Orchid\Platform\Commands\MetricsCommand;
+use Orchid\Platform\Commands\RowsCommand;
+use Orchid\Platform\Commands\ScreenCommand;
 use Orchid\Platform\Commands\SelectionCommand;
-use Orchid\Attachment\Providers\AttachmentServiceProvider;
+use Orchid\Platform\Commands\TableCommand;
+use Orchid\Platform\Dashboard;
+use Watson\Active\ActiveServiceProvider;
 
 /**
  * Class FoundationServiceProvider.
@@ -168,7 +168,7 @@ class FoundationServiceProvider extends ServiceProvider
             return new Dashboard();
         });
 
-        if (! Route::hasMacro('screen')) {
+        if (!Route::hasMacro('screen')) {
             Route::macro('screen', function ($url, $screen, $name = null) {
                 /* @var \Illuminate\Routing\Router $this */
                 return $this->any($url.'/{method?}/{argument?}', [$screen, 'handle'])
@@ -176,7 +176,7 @@ class FoundationServiceProvider extends ServiceProvider
             });
         }
 
-        if (! defined('PLATFORM_PATH')) {
+        if (!defined('PLATFORM_PATH')) {
             /*
              * Get the path to the ORCHID Platform folder.
              */

@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace Orchid\Press\Providers;
 
-use Illuminate\Support\Str;
-use Orchid\Press\Models\Page;
-use Orchid\Press\Models\Post;
-use Orchid\Platform\Dashboard;
-use Orchid\Press\Entities\Many;
-use Orchid\Press\Entities\Single;
-use Orchid\Press\Models\Category;
-use Orchid\Platform\ItemPermission;
-use Illuminate\Support\Facades\View;
-use Symfony\Component\Finder\Finder;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
+use Orchid\Platform\Dashboard;
+use Orchid\Platform\ItemPermission;
 use Orchid\Press\Commands\MakeManyBehavior;
 use Orchid\Press\Commands\MakeSingleBehavior;
+use Orchid\Press\Entities\Many;
+use Orchid\Press\Entities\Single;
 use Orchid\Press\Http\Composers\PressMenuComposer;
 use Orchid\Press\Http\Composers\SystemMenuComposer;
+use Orchid\Press\Models\Category;
+use Orchid\Press\Models\Page;
+use Orchid\Press\Models\Post;
+use Symfony\Component\Finder\Finder;
 
 class PressServiceProvider extends ServiceProvider
 {
@@ -120,11 +120,11 @@ class PressServiceProvider extends ServiceProvider
         $directory = app_path('Orchid/Entities');
         $resources = [];
 
-        if (! is_dir($directory)) {
+        if (!is_dir($directory)) {
             return [];
         }
 
-        foreach ((new Finder)->in($directory)->files() as $resource) {
+        foreach ((new Finder())->in($directory)->files() as $resource) {
             $resource = $namespace.str_replace(
                     ['/', '.php'],
                     ['\\', ''],
@@ -223,7 +223,7 @@ class PressServiceProvider extends ServiceProvider
      */
     public function registerCommands()
     {
-        if (! $this->app->runningInConsole()) {
+        if (!$this->app->runningInConsole()) {
             return;
         }
 

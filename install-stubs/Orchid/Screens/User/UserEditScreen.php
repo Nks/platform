@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\User;
 
-use Orchid\Screen\Link;
-use Orchid\Screen\Screen;
-use Orchid\Screen\Layouts;
-use Illuminate\Http\Request;
-use Orchid\Platform\Models\Role;
-use Orchid\Platform\Models\User;
-use Orchid\Support\Facades\Alert;
-use Orchid\Screen\Fields\Password;
-use Illuminate\Support\Facades\Auth;
 use App\Orchid\Layouts\User\UserEditLayout;
 use App\Orchid\Layouts\User\UserRoleLayout;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Orchid\Platform\Models\Role;
+use Orchid\Platform\Models\User;
+use Orchid\Screen\Fields\Password;
+use Orchid\Screen\Layouts;
+use Orchid\Screen\Link;
+use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Alert;
 
 class UserEditScreen extends Screen
 {
@@ -81,8 +81,9 @@ class UserEditScreen extends Screen
     }
 
     /**
-     * @return array
      * @throws \Throwable
+     *
+     * @return array
      */
     public function layout(): array
     {
@@ -152,7 +153,7 @@ class UserEditScreen extends Screen
      */
     public function switchUserStart(User $user, Request $request)
     {
-        if (! session()->has('original_user')) {
+        if (!session()->has('original_user')) {
             session()->put('original_user', $request->user()->id);
         }
         Auth::login($user);

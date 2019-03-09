@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Orchid\Screen;
 
-use ReflectionClass;
-use ReflectionParameter;
-use Illuminate\Support\Arr;
-use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Orchid\Platform\Http\Controllers\Controller;
+use ReflectionClass;
+use ReflectionParameter;
 
 /**
  * Class Screen.
@@ -76,8 +76,9 @@ abstract class Screen extends Controller
     abstract public function layout(): array;
 
     /**
-     * @return \Illuminate\Contracts\View\View
      * @throws \Throwable
+     *
+     * @return \Illuminate\Contracts\View\View
      */
     public function build()
     {
@@ -92,8 +93,9 @@ abstract class Screen extends Controller
      * @param mixed $method
      * @param mixed $slugLayouts
      *
-     * @return \Illuminate\Contracts\View\View
      * @throws \Throwable
+     *
+     * @return \Illuminate\Contracts\View\View
      */
     protected function asyncBuild($method, $slugLayouts)
     {
@@ -117,8 +119,9 @@ abstract class Screen extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Throwable
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function view()
     {
@@ -134,15 +137,16 @@ abstract class Screen extends Controller
     /**
      * @param mixed ...$parameters
      *
-     * @return \Illuminate\Contracts\View\Factory|View|\Illuminate\View\View|mixed
      * @throws \ReflectionException
      * @throws \Throwable
+     *
+     * @return \Illuminate\Contracts\View\Factory|View|\Illuminate\View\View|mixed
      */
     public function handle(...$parameters)
     {
-        abort_if(! $this->checkAccess(), 403);
+        abort_if(!$this->checkAccess(), 403);
 
-        if ($this->request->method() === 'GET' || (! count($parameters))) {
+        if ($this->request->method() === 'GET' || (!count($parameters))) {
             $this->arguments = $parameters;
 
             return $this->view();
@@ -169,11 +173,11 @@ abstract class Screen extends Controller
     {
         $class = new ReflectionClass($this);
 
-        if (! is_string($method)) {
+        if (!is_string($method)) {
             return;
         }
 
-        if (! $class->hasMethod($method)) {
+        if (!$class->hasMethod($method)) {
             return;
         }
 
@@ -189,7 +193,7 @@ abstract class Screen extends Controller
     }
 
     /**
-     * @param int|string $key
+     * @param int|string               $key
      * @param ReflectionParameter|null $parameter
      *
      * @return mixed

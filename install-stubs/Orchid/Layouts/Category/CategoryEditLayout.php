@@ -5,17 +5,18 @@ declare(strict_types=1);
 namespace App\Orchid\Layouts\Category;
 
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Layouts\Rows;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\TinyMCE;
+use Orchid\Screen\Layouts\Rows;
 
 class CategoryEditLayout extends Rows
 {
     /**
      * Views.
      *
-     * @return array
      * @throws \Throwable
+     *
+     * @return array
      */
     public function fields(): array
     {

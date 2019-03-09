@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Orchid\Platform\Http\Controllers\Systems;
 
-use Illuminate\Support\Arr;
-use Orchid\Attachment\File;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Arr;
+use Orchid\Attachment\File;
 use Orchid\Attachment\Models\Attachment;
 use Orchid\Platform\Http\Controllers\Controller;
 
@@ -67,7 +67,7 @@ class AttachmentController extends Controller
     /**
      * Delete files.
      *
-     * @param int $id
+     * @param int     $id
      * @param Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -81,7 +81,7 @@ class AttachmentController extends Controller
     }
 
     /**
-     * @param int $id
+     * @param int     $id
      * @param Request $request
      *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
@@ -98,7 +98,7 @@ class AttachmentController extends Controller
 
     /**
      * @param UploadedFile $file
-     * @param Request $request
+     * @param Request      $request
      *
      * @return mixed
      */

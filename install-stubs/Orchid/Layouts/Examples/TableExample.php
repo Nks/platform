@@ -2,8 +2,8 @@
 
 namespace App\Orchid\Layouts\Examples;
 
-use Orchid\Screen\TD;
 use Orchid\Screen\Layouts\Table;
+use Orchid\Screen\TD;
 
 class TableExample extends Table
 {

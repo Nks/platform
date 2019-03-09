@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Orchid\Screen;
 
 use Illuminate\Support\Str;
-use Orchid\Screen\Traits\CanSee;
 use Orchid\Screen\Contracts\FieldContract;
 use Orchid\Screen\Exceptions\FieldRequiredAttributeException;
+use Orchid\Screen\Traits\CanSee;
 
 /**
  * Class Field.
@@ -109,7 +109,7 @@ class Field implements FieldContract
 
     /**
      * @param string $name
-     * @param array $arguments
+     * @param array  $arguments
      *
      * @return self
      */
@@ -130,6 +130,7 @@ class Field implements FieldContract
 
     /**
      * @param mixed $value
+     *
      * @return self
      */
     public function value($value): self
@@ -141,7 +142,7 @@ class Field implements FieldContract
 
     /**
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
      *
      * @return self
      */
@@ -173,13 +174,14 @@ class Field implements FieldContract
     }
 
     /**
-     * @return Field
      * @throws \Throwable
+     *
+     * @return Field
      */
     public function checkRequired()
     {
         foreach ($this->required as $attribute) {
-            throw_if(! collect($this->attributes)->offsetExists($attribute),
+            throw_if(!collect($this->attributes)->offsetExists($attribute),
                 FieldRequiredAttributeException::class, $attribute);
         }
 
@@ -187,13 +189,13 @@ class Field implements FieldContract
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|mixed
-     *
      * @throws \Throwable
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|mixed
      */
     public function render()
     {
-        if (! $this->display) {
+        if (!$this->display) {
             return;
         }
 
@@ -204,7 +206,7 @@ class Field implements FieldContract
         $this->attributes['id'] = $this->getId();
 
         if ($this->hasError()) {
-            if (! isset($attributes['class']) || is_null($attributes['class'])) {
+            if (!isset($attributes['class']) || is_null($attributes['class'])) {
                 $attributes['class'] = ' is-invalid';
             } else {
                 $attributes['class'] .= ' is-invalid';
@@ -284,14 +286,14 @@ class Field implements FieldContract
     }
 
     /**
-     * @param      string $key
-     * @param null $value
+     * @param string $key
+     * @param null   $value
      *
      * @return $this|mixed|null
      */
     public function get($key, $value = null)
     {
-        if (! isset($this->attributes[$key])) {
+        if (!isset($this->attributes[$key])) {
             return $value;
         }
 
@@ -345,15 +347,15 @@ class Field implements FieldContract
 
         $this->attributes['name'] = $name;
 
-        if (! is_null($prefix)) {
+        if (!is_null($prefix)) {
             $this->attributes['name'] = $prefix.$name;
         }
 
-        if (is_null($prefix) && ! is_null($lang)) {
+        if (is_null($prefix) && !is_null($lang)) {
             $this->attributes['name'] = $lang.$name;
         }
 
-        if (! is_null($prefix) && ! is_null($lang)) {
+        if (!is_null($prefix) && !is_null($lang)) {
             $this->attributes['name'] = $prefix.'['.$lang.']'.$name;
         }
 
@@ -389,7 +391,7 @@ class Field implements FieldContract
      */
     public static function group($group)
     {
-        if (! is_array($group)) {
+        if (!is_array($group)) {
             return $group();
         }
 

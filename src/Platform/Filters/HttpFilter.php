@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Orchid\Platform\Filters;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Builder;
 
 class HttpFilter
 {
@@ -114,7 +114,7 @@ class HttpFilter
     /**
      * @param Builder $query
      * @param         $value
-     * @param string $property
+     * @param string  $property
      *
      * @return Builder
      */

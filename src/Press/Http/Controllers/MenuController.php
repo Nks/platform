@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Orchid\Press\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Orchid\Press\Models\Menu;
-use Orchid\Platform\Dashboard;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+use Orchid\Platform\Dashboard;
 use Orchid\Platform\Http\Controllers\Controller;
+use Orchid\Press\Models\Menu;
 
 class MenuController extends Controller
 {
@@ -45,7 +45,7 @@ class MenuController extends Controller
     }
 
     /**
-     * @param string $name
+     * @param string  $name
      * @param Request $request
      *
      * @return View
@@ -94,7 +94,7 @@ class MenuController extends Controller
     }
 
     /**
-     * @param string $menu
+     * @param string  $menu
      * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse
@@ -113,7 +113,7 @@ class MenuController extends Controller
 
     /**
      * @param array $items
-     * @param int $parent
+     * @param int   $parent
      */
     private function createMenuElement(array $items, $parent = 0)
     {

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Orchid\Filters;
 
-use Orchid\Screen\Field;
-use Orchid\Platform\Models\Role;
-use Orchid\Screen\Fields\Select;
-use Orchid\Platform\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
+use Orchid\Platform\Filters\Filter;
+use Orchid\Platform\Models\Role;
+use Orchid\Screen\Field;
+use Orchid\Screen\Fields\Select;
 
 class RoleFilter extends Filter
 {

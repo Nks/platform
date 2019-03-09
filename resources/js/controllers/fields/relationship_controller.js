@@ -5,7 +5,8 @@ export default class extends Controller {
      *
      */
     connect() {
-        const select = this.element.querySelector('select');
+        const select = this.element.querySelector('select'),
+            $select = $(select);
 
         $.ajaxSetup({
             headers: {
@@ -13,8 +14,9 @@ export default class extends Controller {
             },
         });
 
-        $(select).select2({
+        $select.select2({
             theme: 'bootstrap',
+            allowClear: !select.hasAttribute('required'),
             ajax: {
                 type: 'POST',
                 cache: true,
@@ -22,8 +24,14 @@ export default class extends Controller {
                 url: () => this.data.get('url'),
                 dataType: 'json',
             },
-            selectOnClose: true,
-            placeholder: this.data.get('placeholder'),
+            placeholder: select.getAttribute('placeholder') || '',
+        }).on('select2:unselecting', function () {
+            $select.data('state', 'unselected');
+        }).on('select2:opening', (e) => {
+            if ($select.data('state') === 'unselected') {
+                e.preventDefault();
+                $select.removeData('state');
+            }
         });
 
         if (!this.data.get('value')) {
@@ -31,13 +39,13 @@ export default class extends Controller {
         }
 
         axios.post(this.data.get('url-value')).then((response) => {
-            $(select)
+            $select
                 .append(new Option(response.data.text, response.data.id, true, true))
                 .trigger('change');
         });
 
         document.addEventListener('turbolinks:before-cache', () => {
-            $(select).select2('destroy');
+            $select.select2('destroy');
         }, { once: true });
     }
 }
